@@ -6,24 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('team_tournament', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained()->cascadeOnDelete();
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
-            $table->string('avatar')->nullable();
+            $table->foreignId('team_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('tournament_id')->constrained()->cascadeOnDelete();
+            $table->timestamp('registered_at')->nullable();
+            $table->string('status')->default('pending');
+            $table->unsignedSmallInteger('final_rank')->nullable();
+            $table->unique(['team_id', 'tournament_id']);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('team_tournament');
