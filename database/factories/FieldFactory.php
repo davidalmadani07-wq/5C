@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Venue;
 use App\Models\Field;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,7 +19,11 @@ class FieldFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'venue_id' => Venue::factory(),
+        'name' => 'Lapangan ' . fake()->unique()->bothify('?#'),
+        'type' => fake()->randomElement(['minisoccer', 'futsal']),
+        'price_per_hour' => fake()->randomElement([100000, 150000, 200000]),
+        'is_active' => true,
         ];
     }
 }
