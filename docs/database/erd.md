@@ -86,7 +86,7 @@ erDiagram
         int total_price
         string status
     }
-
+```
     Type,Relationship,Eloquent
 One-to-One,User and Profile,hasOne / belongsTo
 One-to-Many,Venue to Field,hasMany / belongsTo
