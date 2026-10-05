@@ -87,18 +87,7 @@ erDiagram
         string status
     }
 ```
-    Type,Relationship,Eloquent
-One-to-One,User and Profile,hasOne / belongsTo
-One-to-Many,Venue to Field,hasMany / belongsTo
-One-to-Many,User to Team,hasMany / belongsTo
-One-to-Many,Team to Player,hasMany / belongsTo
-One-to-Many,User to Booking,hasMany / belongsTo
-One-to-Many,Field to Booking,hasMany / belongsTo
-Many-to-Many,Field and Facility (pivot facility_field),belongsToMany
-Many-to-Many + pivot data,"Team and Tournament (pivot team_tournament, columns registered_at, status, group_name)",belongsToMany + withPivot
-Has-Many-Through,Venue to Booking through Field,hasManyThrough
-Has-Many-Through,User to Player through Team,hasManyThrough
-
+    2. Relationship SummaryTypeRelationshipEloquentOne-to-OneUser and ProfilehasOne / belongsToOne-to-ManyVenue to FieldhasMany / belongsToOne-to-ManyUser to TeamhasMany / belongsToOne-to-ManyTeam to PlayerhasMany / belongsToOne-to-ManyUser to BookinghasMany / belongsToOne-to-ManyField to BookinghasMany / belongsToMany-to-ManyField and Facility (pivot facility_field)belongsToManyMany-to-Many + pivot dataTeam and Tournament (pivot team_tournament, columns registered_at, status, group_name)belongsToMany + withPivotHas-Many-ThroughVenue to Booking through FieldhasManyThroughHas-Many-ThroughUser to Player through TeamhasManyThrough
 3. Design Notes
 Unique constraints: profiles.user_id, facilities.name, and (team_tournament.team_id, team_tournament.tournament_id) so a team joins a tournament only once.
 
